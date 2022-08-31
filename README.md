@@ -1,6 +1,6 @@
-# esp32-file-iterator
+# esp-file-iterator
 
-ESP32 component that lets you iterate through files in a given directory. Helpful
+esp component that lets you iterate through files in a given directory. Helpful
 for implementing a playlist for an audio player, or an image viewer etc.
 
 # API
