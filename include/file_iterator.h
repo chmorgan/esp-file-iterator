@@ -51,7 +51,7 @@ file_iterator_instance_t* file_iterator_new(const char *base_path);
 void file_iterator_delete(file_iterator_instance_t *i);
 
 /**
- * @brief Move to next song
+ * @brief Move the iterator to the next entry
  *
  * @return
  *    - ESP_OK: Success
@@ -60,7 +60,7 @@ void file_iterator_delete(file_iterator_instance_t *i);
 esp_err_t file_iterator_next(file_iterator_instance_t* i);
 
 /**
- * @brief Move to previous song
+ * @brief Move the iterator to the previous entry
  *
  * @return
  *    - ESP_OK: Success
@@ -69,16 +69,16 @@ esp_err_t file_iterator_next(file_iterator_instance_t* i);
 esp_err_t file_iterator_prev(file_iterator_instance_t* i);
 
 /**
- * @brief Get the number of items in the playlist
+ * @brief Get the number of items in the iterator
  *
- * @return size_t The number of items in the playlist
+ * @return size_t The number of items in the iterator
  */
 size_t file_iterator_get_count(file_iterator_instance_t* i);
 
 /**
  * @brief Get the index of the selected
  *
- * @return Index of audio being played
+ * @return Index of present iterator
  */
 size_t file_iterator_get_index(file_iterator_instance_t* i);
 
@@ -92,8 +92,8 @@ void file_iterator_set_index(file_iterator_instance_t* i, size_t index);
 /**
  * @brief Get file name of given index
  *
- * @param index Index of audio file
- * @return Name of audio file with given index. NULL if not exist.
+ * @param index Index of the file entry (see file_iterator_get_index())
+ * @return Name of file with given index. NULL if not exist.
  */
 const char *file_iterator_get_name_from_index(file_iterator_instance_t* i, size_t index);
 
