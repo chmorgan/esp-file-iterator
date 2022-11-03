@@ -1,0 +1,29 @@
+name: Build and Run Tests
+
+on: [push]
+
+jobs:
+  # -----------------------------------------------------------------------------------------------
+  build:
+    name: Build Test App
+    runs-on: ubuntu-20.04
+    container: espressif/idf:latest # <--- Specify version of ESP-IDF in image tag
+    strategy:
+      fail-fast: false
+      matrix:
+        espidf_target: ["esp32"]  # <--- Specify a list of Espressif chips connected to your runner
+    steps:
+      # -------------------------------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+      # -------------------------------------------------------------------------------------------
+      - name: Build example Application with ESP-IDF
+        env:
+          IDF_TARGET: ${{ matrix.espidf_target }}
+        shell: bash
+        working-directory: example
+        run: |
+          . ${IDF_PATH}/export.sh
+          idf.py build
